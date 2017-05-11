@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<sqls>
+
+	<sql name="SYS001">
+	<![CDATA[
+select 1 from dual
+	]]>
+	</sql>
+	
+	<sql name="SYS002">
+	<![CDATA[
+	INSERT INTO SYS_USERINFO_WX (openid, nickname, sex, city, country, province, language, headimgurl, unionid, groupid, remark)
+    VALUES (:openid, :nickname, :sex, :city, :country, :province, :language, :headimgurl, :unionid, :groupid, :remark)
+    ON CONFLICT (openid) DO UPDATE SET nickname = EXCLUDED.nickname, sex = EXCLUDED.sex, city = EXCLUDED.city, country = EXCLUDED.country, province = EXCLUDED.province, language = EXCLUDED.language, headimgurl = EXCLUDED.headimgurl, unionid = EXCLUDED.unionid, groupid = EXCLUDED.groupid, remark = EXCLUDED.remark;
+	]]>
+	</sql>
+</sqls>

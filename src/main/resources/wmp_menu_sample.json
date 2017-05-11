@@ -1,0 +1,16 @@
+{
+	"button": [
+		{
+			"name": "办理业务",
+			"sub_button": [
+				{
+					"name": "上传",
+					"type": "view",
+					"key": "rselfmenu_1_1",
+					"url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb5b5b7696d6ec278&redirect_uri=http%3A%2F%2Fwww.autoboy.com.cn%2Fsandbox%2Frestfull%2Fwmp%2Fauthorize&response_type=code&scope=snsapi_userinfo&state=http://www.autoboy.com.cn/sandbox/wpMenu#wechat_redirect",
+					"sub_button": []
+				}
+			]
+		}
+	]
+}

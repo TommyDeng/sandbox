@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/base :: html_head(~{::title},~{::link},~{::script})">
+<script th:src="@{/js/address-partition.js}"></script>
+<script type="text/javascript" th:inline="javascript">
+	$(document).ready(function() {
+		loadProvince([[${formData.properties[PROVINCE]}]]);
+		loadCity([[${formData.properties[CITY]}]]);
+		loadCountry([[${formData.properties[COUNTRY]}]]);
+// 		loadTown([[${formData.properties[TOWN]}]]);
+
+		$("#province-select").on('change', function() {
+			changeProvince(this.value);
+		});
+
+		$("#city-select").on('change', function() {
+			changeCity(this.value);
+		});
+
+// 		$("#country-select").on('change', function() {
+// 			changeCountry(this.value);
+// 		});
+		
+	});
+</script>
+</head>
+<body th:replace="/base :: html_body(~{::#body-content})">
+	<div id="body-content">
+		<div class="sub-page-title">
+			<span class="desc">录入信息</span>
+		</div>
+
+		<div class="address-edit-content">
+			<form class="form-horizontal" role="form" th:object="${formData}">
+				<input type="hidden" th:field="*{properties[UNIQUE_CODE]}" /> <input
+					type="hidden" th:field="*{properties[USER_UC]}" />
+				<ul>
+					<li><input type="text" th:field="*{properties[RECEIVER_NAME]}"
+						placeholder="姓名" maxlength="20" required="required"></li>
+					<li><input type="tel" th:field="*{properties[CONTACT]}"
+						placeholder="手机/电话" maxlength="30" required="required"></li>
+					<li><select th:field="*{properties[PROVINCE]}"
+						id="province-select">
+					</select> <select th:field="*{properties[CITY]}" id="city-select">
+					</select></li>
+					<li><select th:field="*{properties[COUNTRY]}"
+						id="country-select">
+					</select> <!-- 					<select th:field="*{properties[TOWN]}" id="town-select"></select> -->
+					</li>
+					<li><textarea rows="3" th:field="*{properties[ADDRESS]}"
+							placeholder="详细地址" maxlength="150" required="required"></textarea></li>
+					<li><button class="save"
+							th:formaction="@{saveProfile(AT=${AT},rowUC=*{properties[UNIQUE_CODE]},previousPage=${previousPage})}"
+							th:formmethod="post" onclick="return formValidation();">保存</button></li>
+				</ul>
+
+			</form>
+		</div>
+	</div>
+</body>
+</html>
