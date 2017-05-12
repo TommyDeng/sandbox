@@ -1,3 +1,6 @@
+--创建数据库实例
+CREATE DATABASE sandbox;
+
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 --select uuid_generate_v4()
 
